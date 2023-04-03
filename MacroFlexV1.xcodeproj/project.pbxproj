@@ -11,6 +11,16 @@
 		8934132F29D7897000D9457B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8934132E29D7897000D9457B /* ContentView.swift */; };
 		8934133129D7897100D9457B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8934133029D7897100D9457B /* Assets.xcassets */; };
 		8934133429D7897100D9457B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8934133329D7897100D9457B /* Preview Assets.xcassets */; };
+		8934133C29D78A4F00D9457B /* SwiftfulRouting in Frameworks */ = {isa = PBXBuildFile; productRef = 8934133B29D78A4F00D9457B /* SwiftfulRouting */; };
+		8934133E29D78B2400D9457B /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8934133D29D78B2400D9457B /* DashboardView.swift */; };
+		8934134529D78D0500D9457B /* MacrosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8934134429D78D0500D9457B /* MacrosView.swift */; };
+		8934134729D78D1000D9457B /* ExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8934134629D78D1000D9457B /* ExerciseView.swift */; };
+		8934134929D78D1D00D9457B /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8934134829D78D1D00D9457B /* ProgressView.swift */; };
+		8934134B29D78D6300D9457B /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8934134A29D78D6300D9457B /* AddView.swift */; };
+		8934135129D78DCC00D9457B /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8934135029D78DCC00D9457B /* AddButton.swift */; };
+		8934135329D78EC300D9457B /* SplashscreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8934135229D78EC300D9457B /* SplashscreenView.swift */; };
+		8934135529D78F4200D9457B /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8934135429D78F4200D9457B /* CustomTabView.swift */; };
+		8934135C29D7909900D9457B /* StepsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8934135B29D7909900D9457B /* StepsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +29,15 @@
 		8934132E29D7897000D9457B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8934133029D7897100D9457B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8934133329D7897100D9457B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		8934133D29D78B2400D9457B /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		8934134429D78D0500D9457B /* MacrosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacrosView.swift; sourceTree = "<group>"; };
+		8934134629D78D1000D9457B /* ExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseView.swift; sourceTree = "<group>"; };
+		8934134829D78D1D00D9457B /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		8934134A29D78D6300D9457B /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
+		8934135029D78DCC00D9457B /* AddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
+		8934135229D78EC300D9457B /* SplashscreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashscreenView.swift; sourceTree = "<group>"; };
+		8934135429D78F4200D9457B /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
+		8934135B29D7909900D9457B /* StepsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8934133C29D78A4F00D9457B /* SwiftfulRouting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,6 +71,8 @@
 		8934132B29D7897000D9457B /* MacroFlexV1 */ = {
 			isa = PBXGroup;
 			children = (
+				8934134C29D78D8C00D9457B /* Components */,
+				8934133F29D78C6600D9457B /* Views */,
 				8934132C29D7897000D9457B /* MacroFlexV1App.swift */,
 				8934132E29D7897000D9457B /* ContentView.swift */,
 				8934133029D7897100D9457B /* Assets.xcassets */,
@@ -65,6 +87,77 @@
 				8934133329D7897100D9457B /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		8934133F29D78C6600D9457B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8934135A29D7908A00D9457B /* Metrics */,
+				8934135429D78F4200D9457B /* CustomTabView.swift */,
+				8934135229D78EC300D9457B /* SplashscreenView.swift */,
+				8934135629D78FCC00D9457B /* Onboarding */,
+				8934135729D78FD700D9457B /* Dashboard */,
+				8934135829D78FDF00D9457B /* Macros */,
+				8934135929D78FE600D9457B /* Exercise */,
+				8934134829D78D1D00D9457B /* ProgressView.swift */,
+				8934134A29D78D6300D9457B /* AddView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8934134C29D78D8C00D9457B /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				8934134F29D78DBF00D9457B /* New Group */,
+				8934135029D78DCC00D9457B /* AddButton.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		8934134F29D78DBF00D9457B /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		8934135629D78FCC00D9457B /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		8934135729D78FD700D9457B /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				8934133D29D78B2400D9457B /* DashboardView.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		8934135829D78FDF00D9457B /* Macros */ = {
+			isa = PBXGroup;
+			children = (
+				8934134429D78D0500D9457B /* MacrosView.swift */,
+			);
+			path = Macros;
+			sourceTree = "<group>";
+		};
+		8934135929D78FE600D9457B /* Exercise */ = {
+			isa = PBXGroup;
+			children = (
+				8934134629D78D1000D9457B /* ExerciseView.swift */,
+			);
+			path = Exercise;
+			sourceTree = "<group>";
+		};
+		8934135A29D7908A00D9457B /* Metrics */ = {
+			isa = PBXGroup;
+			children = (
+				8934135B29D7909900D9457B /* StepsView.swift */,
+			);
+			path = Metrics;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +176,9 @@
 			dependencies = (
 			);
 			name = MacroFlexV1;
+			packageProductDependencies = (
+				8934133B29D78A4F00D9457B /* SwiftfulRouting */,
+			);
 			productName = MacroFlexV1;
 			productReference = 8934132929D7897000D9457B /* MacroFlexV1.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +207,9 @@
 				Base,
 			);
 			mainGroup = 8934132029D7897000D9457B;
+			packageReferences = (
+				8934133A29D78A4F00D9457B /* XCRemoteSwiftPackageReference "SwiftfulRouting" */,
+			);
 			productRefGroup = 8934132A29D7897000D9457B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -137,7 +236,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8934134729D78D1000D9457B /* ExerciseView.swift in Sources */,
 				8934132F29D7897000D9457B /* ContentView.swift in Sources */,
+				8934135129D78DCC00D9457B /* AddButton.swift in Sources */,
+				8934133E29D78B2400D9457B /* DashboardView.swift in Sources */,
+				8934135329D78EC300D9457B /* SplashscreenView.swift in Sources */,
+				8934134B29D78D6300D9457B /* AddView.swift in Sources */,
+				8934134529D78D0500D9457B /* MacrosView.swift in Sources */,
+				8934135529D78F4200D9457B /* CustomTabView.swift in Sources */,
+				8934135C29D7909900D9457B /* StepsView.swift in Sources */,
+				8934134929D78D1D00D9457B /* ProgressView.swift in Sources */,
 				8934132D29D7897000D9457B /* MacroFlexV1App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -339,6 +447,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8934133A29D78A4F00D9457B /* XCRemoteSwiftPackageReference "SwiftfulRouting" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftfulThinking/SwiftfulRouting.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8934133B29D78A4F00D9457B /* SwiftfulRouting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8934133A29D78A4F00D9457B /* XCRemoteSwiftPackageReference "SwiftfulRouting" */;
+			productName = SwiftfulRouting;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8934132129D7897000D9457B /* Project object */;
 }

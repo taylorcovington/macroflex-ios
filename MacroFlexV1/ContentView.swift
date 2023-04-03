@@ -6,16 +6,13 @@
 //
 
 import SwiftUI
+import SwiftfulRouting
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        RouterView(addNavigationView: true) { router in
+            CustomTabView(router: router)
         }
-        .padding()
     }
 }
 
