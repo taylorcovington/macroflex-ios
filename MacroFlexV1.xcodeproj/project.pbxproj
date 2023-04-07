@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		893138E429DB8E1A00FDF70B /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893138E329DB8E1A00FDF70B /* WelcomeView.swift */; };
+		893138E829DB8EBB00FDF70B /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893138E729DB8EBB00FDF70B /* Colors.swift */; };
+		893138EA29DB8EC300FDF70B /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893138E929DB8EC300FDF70B /* Images.swift */; };
+		893138EC29DB8ED100FDF70B /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893138EB29DB8ED100FDF70B /* Icons.swift */; };
+		893138EE29DB90E700FDF70B /* BodyStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893138ED29DB90E700FDF70B /* BodyStatsView.swift */; };
+		893138F029DB967100FDF70B /* MacroCalculationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893138EF29DB967100FDF70B /* MacroCalculationView.swift */; };
+		893138F229DCD6B000FDF70B /* BioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893138F129DCD6B000FDF70B /* BioView.swift */; };
+		893138F429DCD95B00FDF70B /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893138F329DCD95B00FDF70B /* CustomTextField.swift */; };
+		893138F629DCDD5F00FDF70B /* CustomSegmentedPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893138F529DCDD5F00FDF70B /* CustomSegmentedPicker.swift */; };
+		893138F829DCE20900FDF70B /* CustomScrollPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893138F729DCE20900FDF70B /* CustomScrollPicker.swift */; };
+		893138FA29DE2C5900FDF70B /* CustomWeightPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893138F929DE2C5900FDF70B /* CustomWeightPicker.swift */; };
+		893138FC29DE31F800FDF70B /* TrainingExperienceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893138FB29DE31F800FDF70B /* TrainingExperienceView.swift */; };
 		8934132D29D7897000D9457B /* MacroFlexV1App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8934132C29D7897000D9457B /* MacroFlexV1App.swift */; };
 		8934132F29D7897000D9457B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8934132E29D7897000D9457B /* ContentView.swift */; };
 		8934133129D7897100D9457B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8934133029D7897100D9457B /* Assets.xcassets */; };
@@ -21,9 +33,27 @@
 		8934135329D78EC300D9457B /* SplashscreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8934135229D78EC300D9457B /* SplashscreenView.swift */; };
 		8934135529D78F4200D9457B /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8934135429D78F4200D9457B /* CustomTabView.swift */; };
 		8934135C29D7909900D9457B /* StepsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8934135B29D7909900D9457B /* StepsView.swift */; };
+		8946B2C929E0B96D00AEFD7B /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8946B2C829E0B96D00AEFD7B /* Settings.swift */; };
+		8946B2CB29E0BB6500AEFD7B /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8946B2CA29E0BB6500AEFD7B /* AccountView.swift */; };
+		8946B2CD29E0BDBA00AEFD7B /* WaterIntakeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8946B2CC29E0BDBA00AEFD7B /* WaterIntakeView.swift */; };
+		8946B2CF29E0BDCF00AEFD7B /* WeightTrackingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8946B2CE29E0BDCF00AEFD7B /* WeightTrackingView.swift */; };
+		8946B2D129E0C08A00AEFD7B /* CustomDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8946B2D029E0C08A00AEFD7B /* CustomDatePicker.swift */; };
+		8946B2D529E0CA4E00AEFD7B /* GoalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8946B2D429E0CA4E00AEFD7B /* GoalsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		893138E329DB8E1A00FDF70B /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		893138E729DB8EBB00FDF70B /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		893138E929DB8EC300FDF70B /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
+		893138EB29DB8ED100FDF70B /* Icons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
+		893138ED29DB90E700FDF70B /* BodyStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyStatsView.swift; sourceTree = "<group>"; };
+		893138EF29DB967100FDF70B /* MacroCalculationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroCalculationView.swift; sourceTree = "<group>"; };
+		893138F129DCD6B000FDF70B /* BioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioView.swift; sourceTree = "<group>"; };
+		893138F329DCD95B00FDF70B /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		893138F529DCDD5F00FDF70B /* CustomSegmentedPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedPicker.swift; sourceTree = "<group>"; };
+		893138F729DCE20900FDF70B /* CustomScrollPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomScrollPicker.swift; sourceTree = "<group>"; };
+		893138F929DE2C5900FDF70B /* CustomWeightPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomWeightPicker.swift; sourceTree = "<group>"; };
+		893138FB29DE31F800FDF70B /* TrainingExperienceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingExperienceView.swift; sourceTree = "<group>"; };
 		8934132929D7897000D9457B /* MacroFlexV1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacroFlexV1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8934132C29D7897000D9457B /* MacroFlexV1App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroFlexV1App.swift; sourceTree = "<group>"; };
 		8934132E29D7897000D9457B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -38,6 +68,12 @@
 		8934135229D78EC300D9457B /* SplashscreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashscreenView.swift; sourceTree = "<group>"; };
 		8934135429D78F4200D9457B /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
 		8934135B29D7909900D9457B /* StepsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsView.swift; sourceTree = "<group>"; };
+		8946B2C829E0B96D00AEFD7B /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		8946B2CA29E0BB6500AEFD7B /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
+		8946B2CC29E0BDBA00AEFD7B /* WaterIntakeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterIntakeView.swift; sourceTree = "<group>"; };
+		8946B2CE29E0BDCF00AEFD7B /* WeightTrackingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightTrackingView.swift; sourceTree = "<group>"; };
+		8946B2D029E0C08A00AEFD7B /* CustomDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDatePicker.swift; sourceTree = "<group>"; };
+		8946B2D429E0CA4E00AEFD7B /* GoalsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +88,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		893138E529DB8EA600FDF70B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				893138E629DB8EAD00FDF70B /* Constants */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		893138E629DB8EAD00FDF70B /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				893138E729DB8EBB00FDF70B /* Colors.swift */,
+				893138E929DB8EC300FDF70B /* Images.swift */,
+				893138EB29DB8ED100FDF70B /* Icons.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 		8934132029D7897000D9457B = {
 			isa = PBXGroup;
 			children = (
@@ -71,11 +125,13 @@
 		8934132B29D7897000D9457B /* MacroFlexV1 */ = {
 			isa = PBXGroup;
 			children = (
+				8946B2C729E0B95C00AEFD7B /* Models */,
+				8934133029D7897100D9457B /* Assets.xcassets */,
+				893138E529DB8EA600FDF70B /* Helpers */,
 				8934134C29D78D8C00D9457B /* Components */,
 				8934133F29D78C6600D9457B /* Views */,
 				8934132C29D7897000D9457B /* MacroFlexV1App.swift */,
 				8934132E29D7897000D9457B /* ContentView.swift */,
-				8934133029D7897100D9457B /* Assets.xcassets */,
 				8934133229D7897100D9457B /* Preview Content */,
 			);
 			path = MacroFlexV1;
@@ -101,6 +157,7 @@
 				8934135929D78FE600D9457B /* Exercise */,
 				8934134829D78D1D00D9457B /* ProgressView.swift */,
 				8934134A29D78D6300D9457B /* AddView.swift */,
+				8946B2CA29E0BB6500AEFD7B /* AccountView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -108,22 +165,33 @@
 		8934134C29D78D8C00D9457B /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				8934134F29D78DBF00D9457B /* New Group */,
+				8934134F29D78DBF00D9457B /* Form Inputs */,
 				8934135029D78DCC00D9457B /* AddButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
 		};
-		8934134F29D78DBF00D9457B /* New Group */ = {
+		8934134F29D78DBF00D9457B /* Form Inputs */ = {
 			isa = PBXGroup;
 			children = (
+				893138F329DCD95B00FDF70B /* CustomTextField.swift */,
+				893138F529DCDD5F00FDF70B /* CustomSegmentedPicker.swift */,
+				893138F729DCE20900FDF70B /* CustomScrollPicker.swift */,
+				893138F929DE2C5900FDF70B /* CustomWeightPicker.swift */,
+				8946B2D029E0C08A00AEFD7B /* CustomDatePicker.swift */,
 			);
-			path = "New Group";
+			path = "Form Inputs";
 			sourceTree = "<group>";
 		};
 		8934135629D78FCC00D9457B /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				893138E329DB8E1A00FDF70B /* WelcomeView.swift */,
+				893138F129DCD6B000FDF70B /* BioView.swift */,
+				8946B2D429E0CA4E00AEFD7B /* GoalsView.swift */,
+				893138ED29DB90E700FDF70B /* BodyStatsView.swift */,
+				893138EF29DB967100FDF70B /* MacroCalculationView.swift */,
+				893138FB29DE31F800FDF70B /* TrainingExperienceView.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -156,8 +224,18 @@
 			isa = PBXGroup;
 			children = (
 				8934135B29D7909900D9457B /* StepsView.swift */,
+				8946B2CC29E0BDBA00AEFD7B /* WaterIntakeView.swift */,
+				8946B2CE29E0BDCF00AEFD7B /* WeightTrackingView.swift */,
 			);
 			path = Metrics;
+			sourceTree = "<group>";
+		};
+		8946B2C729E0B95C00AEFD7B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8946B2C829E0B96D00AEFD7B /* Settings.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,15 +314,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				893138FA29DE2C5900FDF70B /* CustomWeightPicker.swift in Sources */,
 				8934134729D78D1000D9457B /* ExerciseView.swift in Sources */,
 				8934132F29D7897000D9457B /* ContentView.swift in Sources */,
 				8934135129D78DCC00D9457B /* AddButton.swift in Sources */,
+				893138E429DB8E1A00FDF70B /* WelcomeView.swift in Sources */,
+				8946B2CF29E0BDCF00AEFD7B /* WeightTrackingView.swift in Sources */,
 				8934133E29D78B2400D9457B /* DashboardView.swift in Sources */,
+				893138F829DCE20900FDF70B /* CustomScrollPicker.swift in Sources */,
+				893138FC29DE31F800FDF70B /* TrainingExperienceView.swift in Sources */,
 				8934135329D78EC300D9457B /* SplashscreenView.swift in Sources */,
+				893138EE29DB90E700FDF70B /* BodyStatsView.swift in Sources */,
 				8934134B29D78D6300D9457B /* AddView.swift in Sources */,
+				8946B2D129E0C08A00AEFD7B /* CustomDatePicker.swift in Sources */,
+				893138EA29DB8EC300FDF70B /* Images.swift in Sources */,
+				893138F429DCD95B00FDF70B /* CustomTextField.swift in Sources */,
+				893138F629DCDD5F00FDF70B /* CustomSegmentedPicker.swift in Sources */,
+				893138F229DCD6B000FDF70B /* BioView.swift in Sources */,
+				893138EC29DB8ED100FDF70B /* Icons.swift in Sources */,
 				8934134529D78D0500D9457B /* MacrosView.swift in Sources */,
+				893138E829DB8EBB00FDF70B /* Colors.swift in Sources */,
+				8946B2D529E0CA4E00AEFD7B /* GoalsView.swift in Sources */,
+				8946B2CD29E0BDBA00AEFD7B /* WaterIntakeView.swift in Sources */,
+				8946B2C929E0B96D00AEFD7B /* Settings.swift in Sources */,
+				8946B2CB29E0BB6500AEFD7B /* AccountView.swift in Sources */,
 				8934135529D78F4200D9457B /* CustomTabView.swift in Sources */,
 				8934135C29D7909900D9457B /* StepsView.swift in Sources */,
+				893138F029DB967100FDF70B /* MacroCalculationView.swift in Sources */,
 				8934134929D78D1D00D9457B /* ProgressView.swift in Sources */,
 				8934132D29D7897000D9457B /* MacroFlexV1App.swift in Sources */,
 			);

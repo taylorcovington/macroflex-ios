@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "dark-blue-letters-macroflex.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "dark-blue-letters-macroflex@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "dark-blue-letters-macroflex@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

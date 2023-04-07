@@ -9,9 +9,20 @@ import SwiftUI
 import SwiftfulRouting
 
 struct ContentView: View {
+    var isOnboarding: Bool = true
+    @State private var isSplashScreen = true
+    
     var body: some View {
         RouterView(addNavigationView: true) { router in
-            CustomTabView(router: router)
+            if !isSplashScreen {
+                if isOnboarding {
+                    WelcomeView(router: router)
+                } else {
+                    CustomTabView(router: router)
+                }
+            } else {
+                SplashscreenView(isSplashScreen: $isSplashScreen)
+            }
         }
     }
 }
