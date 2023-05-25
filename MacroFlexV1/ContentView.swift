@@ -9,7 +9,8 @@ import SwiftUI
 import SwiftfulRouting
 
 struct ContentView: View {
-    var isOnboarding: Bool = true
+//    var isOnboarding: Bool = true
+    @AppStorage("onboarding") var isOnboarding: Bool = true
     @State private var isSplashScreen = true
     
     var body: some View {

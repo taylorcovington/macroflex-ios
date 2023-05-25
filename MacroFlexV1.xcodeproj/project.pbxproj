@@ -39,6 +39,24 @@
 		8946B2CF29E0BDCF00AEFD7B /* WeightTrackingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8946B2CE29E0BDCF00AEFD7B /* WeightTrackingView.swift */; };
 		8946B2D129E0C08A00AEFD7B /* CustomDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8946B2D029E0C08A00AEFD7B /* CustomDatePicker.swift */; };
 		8946B2D529E0CA4E00AEFD7B /* GoalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8946B2D429E0CA4E00AEFD7B /* GoalsView.swift */; };
+		8946B2D729E0D2F700AEFD7B /* AS_Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8946B2D629E0D2F700AEFD7B /* AS_Feature.swift */; };
+		8946B2D929E0D33400AEFD7B /* HapticFeedbacks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8946B2D829E0D33400AEFD7B /* HapticFeedbacks.swift */; };
+		8946B2DB29E0D3FD00AEFD7B /* TitleTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8946B2DA29E0D3FD00AEFD7B /* TitleTextView.swift */; };
+		8946B2DD29E0D42600AEFD7B /* BottomToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8946B2DC29E0D42600AEFD7B /* BottomToolbarView.swift */; };
+		8946B2DF29E0D44F00AEFD7B /* AS_Alignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8946B2DE29E0D44F00AEFD7B /* AS_Alignment.swift */; };
+		8946B2E129E0D49C00AEFD7B /* PaginationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8946B2E029E0D49C00AEFD7B /* PaginationView.swift */; };
+		8946B2E329E0D4C500AEFD7B /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8946B2E229E0D4C500AEFD7B /* ButtonView.swift */; };
+		8946B2E529E0D4F100AEFD7B /* AS_ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8946B2E429E0D4F100AEFD7B /* AS_ButtonStyle.swift */; };
+		8946B2E729E0D51800AEFD7B /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8946B2E629E0D51800AEFD7B /* LoadingView.swift */; };
+		8946B2E929E5C14100AEFD7B /* CustomWeightPickerV1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8946B2E829E5C14100AEFD7B /* CustomWeightPickerV1.swift */; };
+		8946B2EC29E5FEC200AEFD7B /* HealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8946B2EB29E5FEC200AEFD7B /* HealthStore.swift */; };
+		8946B2EF29E6043E00AEFD7B /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8946B2EE29E6043E00AEFD7B /* Activity.swift */; };
+		8946B2F129E6050400AEFD7B /* HealthStat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8946B2F029E6050400AEFD7B /* HealthStat.swift */; };
+		8946B2F329E616EB00AEFD7B /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8946B2F229E616EB00AEFD7B /* ChartView.swift */; };
+		8946B2F529E617D800AEFD7B /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8946B2F429E617D800AEFD7B /* DashboardViewModel.swift */; };
+		8946B2F729E6D69400AEFD7B /* ConnectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8946B2F629E6D69400AEFD7B /* ConnectView.swift */; };
+		8946B2FD29E9BDD400AEFD7B /* moodtestscale.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8946B2FC29E9BDD400AEFD7B /* moodtestscale.gif */; };
+		8946B30129E9BE2E00AEFD7B /* GifImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8946B30029E9BE2E00AEFD7B /* GifImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +92,25 @@
 		8946B2CE29E0BDCF00AEFD7B /* WeightTrackingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightTrackingView.swift; sourceTree = "<group>"; };
 		8946B2D029E0C08A00AEFD7B /* CustomDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDatePicker.swift; sourceTree = "<group>"; };
 		8946B2D429E0CA4E00AEFD7B /* GoalsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsView.swift; sourceTree = "<group>"; };
+		8946B2D629E0D2F700AEFD7B /* AS_Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AS_Feature.swift; sourceTree = "<group>"; };
+		8946B2D829E0D33400AEFD7B /* HapticFeedbacks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedbacks.swift; sourceTree = "<group>"; };
+		8946B2DA29E0D3FD00AEFD7B /* TitleTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTextView.swift; sourceTree = "<group>"; };
+		8946B2DC29E0D42600AEFD7B /* BottomToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomToolbarView.swift; sourceTree = "<group>"; };
+		8946B2DE29E0D44F00AEFD7B /* AS_Alignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AS_Alignment.swift; sourceTree = "<group>"; };
+		8946B2E029E0D49C00AEFD7B /* PaginationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationView.swift; sourceTree = "<group>"; };
+		8946B2E229E0D4C500AEFD7B /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
+		8946B2E429E0D4F100AEFD7B /* AS_ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AS_ButtonStyle.swift; sourceTree = "<group>"; };
+		8946B2E629E0D51800AEFD7B /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		8946B2E829E5C14100AEFD7B /* CustomWeightPickerV1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomWeightPickerV1.swift; sourceTree = "<group>"; };
+		8946B2EB29E5FEC200AEFD7B /* HealthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStore.swift; sourceTree = "<group>"; };
+		8946B2ED29E603DA00AEFD7B /* MacroFlexV1.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MacroFlexV1.entitlements; sourceTree = "<group>"; };
+		8946B2EE29E6043E00AEFD7B /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		8946B2F029E6050400AEFD7B /* HealthStat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStat.swift; sourceTree = "<group>"; };
+		8946B2F229E616EB00AEFD7B /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
+		8946B2F429E617D800AEFD7B /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
+		8946B2F629E6D69400AEFD7B /* ConnectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectView.swift; sourceTree = "<group>"; };
+		8946B2FC29E9BDD400AEFD7B /* moodtestscale.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = moodtestscale.gif; sourceTree = "<group>"; };
+		8946B30029E9BE2E00AEFD7B /* GifImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +146,9 @@
 		8934132029D7897000D9457B = {
 			isa = PBXGroup;
 			children = (
+				8934133029D7897100D9457B /* Assets.xcassets */,
+				8946B2FC29E9BDD400AEFD7B /* moodtestscale.gif */,
+				8946B2D829E0D33400AEFD7B /* HapticFeedbacks.swift */,
 				8934132B29D7897000D9457B /* MacroFlexV1 */,
 				8934132A29D7897000D9457B /* Products */,
 			);
@@ -125,14 +165,16 @@
 		8934132B29D7897000D9457B /* MacroFlexV1 */ = {
 			isa = PBXGroup;
 			children = (
+				8946B2ED29E603DA00AEFD7B /* MacroFlexV1.entitlements */,
+				8946B2EA29E5FEB700AEFD7B /* Services */,
 				8946B2C729E0B95C00AEFD7B /* Models */,
-				8934133029D7897100D9457B /* Assets.xcassets */,
 				893138E529DB8EA600FDF70B /* Helpers */,
 				8934134C29D78D8C00D9457B /* Components */,
 				8934133F29D78C6600D9457B /* Views */,
 				8934132C29D7897000D9457B /* MacroFlexV1App.swift */,
 				8934132E29D7897000D9457B /* ContentView.swift */,
 				8934133229D7897100D9457B /* Preview Content */,
+				8946B30029E9BE2E00AEFD7B /* GifImage.swift */,
 			);
 			path = MacroFlexV1;
 			sourceTree = "<group>";
@@ -148,16 +190,17 @@
 		8934133F29D78C6600D9457B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				8934135A29D7908A00D9457B /* Metrics */,
 				8934135429D78F4200D9457B /* CustomTabView.swift */,
 				8934135229D78EC300D9457B /* SplashscreenView.swift */,
 				8934135629D78FCC00D9457B /* Onboarding */,
 				8934135729D78FD700D9457B /* Dashboard */,
+				8934135A29D7908A00D9457B /* Metrics */,
 				8934135829D78FDF00D9457B /* Macros */,
 				8934135929D78FE600D9457B /* Exercise */,
 				8934134829D78D1D00D9457B /* ProgressView.swift */,
 				8934134A29D78D6300D9457B /* AddView.swift */,
 				8946B2CA29E0BB6500AEFD7B /* AccountView.swift */,
+				8946B2F229E616EB00AEFD7B /* ChartView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -167,6 +210,11 @@
 			children = (
 				8934134F29D78DBF00D9457B /* Form Inputs */,
 				8934135029D78DCC00D9457B /* AddButton.swift */,
+				8946B2DA29E0D3FD00AEFD7B /* TitleTextView.swift */,
+				8946B2DC29E0D42600AEFD7B /* BottomToolbarView.swift */,
+				8946B2E029E0D49C00AEFD7B /* PaginationView.swift */,
+				8946B2E229E0D4C500AEFD7B /* ButtonView.swift */,
+				8946B2E629E0D51800AEFD7B /* LoadingView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -179,6 +227,7 @@
 				893138F729DCE20900FDF70B /* CustomScrollPicker.swift */,
 				893138F929DE2C5900FDF70B /* CustomWeightPicker.swift */,
 				8946B2D029E0C08A00AEFD7B /* CustomDatePicker.swift */,
+				8946B2E829E5C14100AEFD7B /* CustomWeightPickerV1.swift */,
 			);
 			path = "Form Inputs";
 			sourceTree = "<group>";
@@ -187,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				893138E329DB8E1A00FDF70B /* WelcomeView.swift */,
+				8946B2F629E6D69400AEFD7B /* ConnectView.swift */,
 				893138F129DCD6B000FDF70B /* BioView.swift */,
 				8946B2D429E0CA4E00AEFD7B /* GoalsView.swift */,
 				893138ED29DB90E700FDF70B /* BodyStatsView.swift */,
@@ -200,6 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				8934133D29D78B2400D9457B /* DashboardView.swift */,
+				8946B2F429E617D800AEFD7B /* DashboardViewModel.swift */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
@@ -234,8 +285,21 @@
 			isa = PBXGroup;
 			children = (
 				8946B2C829E0B96D00AEFD7B /* Settings.swift */,
+				8946B2D629E0D2F700AEFD7B /* AS_Feature.swift */,
+				8946B2DE29E0D44F00AEFD7B /* AS_Alignment.swift */,
+				8946B2E429E0D4F100AEFD7B /* AS_ButtonStyle.swift */,
+				8946B2EE29E6043E00AEFD7B /* Activity.swift */,
+				8946B2F029E6050400AEFD7B /* HealthStat.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		8946B2EA29E5FEB700AEFD7B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				8946B2EB29E5FEC200AEFD7B /* HealthStore.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -302,6 +366,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8946B2FD29E9BDD400AEFD7B /* moodtestscale.gif in Resources */,
 				8934133429D7897100D9457B /* Preview Assets.xcassets in Resources */,
 				8934133129D7897100D9457B /* Assets.xcassets in Resources */,
 			);
@@ -316,30 +381,47 @@
 			files = (
 				893138FA29DE2C5900FDF70B /* CustomWeightPicker.swift in Sources */,
 				8934134729D78D1000D9457B /* ExerciseView.swift in Sources */,
+				8946B2D729E0D2F700AEFD7B /* AS_Feature.swift in Sources */,
+				8946B2F729E6D69400AEFD7B /* ConnectView.swift in Sources */,
+				8946B30129E9BE2E00AEFD7B /* GifImage.swift in Sources */,
+				8946B2E129E0D49C00AEFD7B /* PaginationView.swift in Sources */,
+				8946B2D929E0D33400AEFD7B /* HapticFeedbacks.swift in Sources */,
 				8934132F29D7897000D9457B /* ContentView.swift in Sources */,
 				8934135129D78DCC00D9457B /* AddButton.swift in Sources */,
 				893138E429DB8E1A00FDF70B /* WelcomeView.swift in Sources */,
 				8946B2CF29E0BDCF00AEFD7B /* WeightTrackingView.swift in Sources */,
 				8934133E29D78B2400D9457B /* DashboardView.swift in Sources */,
+				8946B2DD29E0D42600AEFD7B /* BottomToolbarView.swift in Sources */,
 				893138F829DCE20900FDF70B /* CustomScrollPicker.swift in Sources */,
+				8946B2E529E0D4F100AEFD7B /* AS_ButtonStyle.swift in Sources */,
 				893138FC29DE31F800FDF70B /* TrainingExperienceView.swift in Sources */,
 				8934135329D78EC300D9457B /* SplashscreenView.swift in Sources */,
+				8946B2F529E617D800AEFD7B /* DashboardViewModel.swift in Sources */,
 				893138EE29DB90E700FDF70B /* BodyStatsView.swift in Sources */,
 				8934134B29D78D6300D9457B /* AddView.swift in Sources */,
+				8946B2E729E0D51800AEFD7B /* LoadingView.swift in Sources */,
 				8946B2D129E0C08A00AEFD7B /* CustomDatePicker.swift in Sources */,
 				893138EA29DB8EC300FDF70B /* Images.swift in Sources */,
+				8946B2DB29E0D3FD00AEFD7B /* TitleTextView.swift in Sources */,
 				893138F429DCD95B00FDF70B /* CustomTextField.swift in Sources */,
+				8946B2E929E5C14100AEFD7B /* CustomWeightPickerV1.swift in Sources */,
+				8946B2F129E6050400AEFD7B /* HealthStat.swift in Sources */,
 				893138F629DCDD5F00FDF70B /* CustomSegmentedPicker.swift in Sources */,
 				893138F229DCD6B000FDF70B /* BioView.swift in Sources */,
+				8946B2DF29E0D44F00AEFD7B /* AS_Alignment.swift in Sources */,
 				893138EC29DB8ED100FDF70B /* Icons.swift in Sources */,
+				8946B2EF29E6043E00AEFD7B /* Activity.swift in Sources */,
 				8934134529D78D0500D9457B /* MacrosView.swift in Sources */,
 				893138E829DB8EBB00FDF70B /* Colors.swift in Sources */,
+				8946B2E329E0D4C500AEFD7B /* ButtonView.swift in Sources */,
 				8946B2D529E0CA4E00AEFD7B /* GoalsView.swift in Sources */,
+				8946B2EC29E5FEC200AEFD7B /* HealthStore.swift in Sources */,
 				8946B2CD29E0BDBA00AEFD7B /* WaterIntakeView.swift in Sources */,
 				8946B2C929E0B96D00AEFD7B /* Settings.swift in Sources */,
 				8946B2CB29E0BB6500AEFD7B /* AccountView.swift in Sources */,
 				8934135529D78F4200D9457B /* CustomTabView.swift in Sources */,
 				8934135C29D7909900D9457B /* StepsView.swift in Sources */,
+				8946B2F329E616EB00AEFD7B /* ChartView.swift in Sources */,
 				893138F029DB967100FDF70B /* MacroCalculationView.swift in Sources */,
 				8934134929D78D1D00D9457B /* ProgressView.swift in Sources */,
 				8934132D29D7897000D9457B /* MacroFlexV1App.swift in Sources */,
@@ -468,17 +550,22 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MacroFlexV1/MacroFlexV1.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MacroFlexV1/Preview Content\"";
 				DEVELOPMENT_TEAM = PTCJNTGP22;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = MacroFlex;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "This app allows you to keep track of all your health data in one place. We need your permissions to access this data.";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "This app allows you to keep track of all your health data in one place. We need your permissions to access this data.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "This app allows you to keep track of all your health data in one place.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -497,17 +584,22 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MacroFlexV1/MacroFlexV1.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MacroFlexV1/Preview Content\"";
 				DEVELOPMENT_TEAM = PTCJNTGP22;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = MacroFlex;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "This app allows you to keep track of all your health data in one place. We need your permissions to access this data.";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "This app allows you to keep track of all your health data in one place. We need your permissions to access this data.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "This app allows you to keep track of all your health data in one place.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

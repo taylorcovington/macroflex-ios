@@ -18,7 +18,7 @@ struct CustomDatePicker: View {
 //                Spacer()
 //            }
             DatePicker("What is your birthday?", selection: $date, displayedComponents: .date)
-                .padding(10)
+//                .padding(10)
 //                .labelsHidden()
                 
         }
