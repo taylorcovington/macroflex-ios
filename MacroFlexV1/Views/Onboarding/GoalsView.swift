@@ -13,6 +13,10 @@ struct GoalsView: View {
     
     @State var experience: String = ""
     @State var fitnessGoal: String = ""
+    
+    @AppStorage("experience") var currentExperience: String?
+    @AppStorage("fitness_goal") var currentFitnessGoal: String?
+    
     var experienceOptions: [String] = ["Beginner", "Intermediate", "Expert"]
     var fitnessGoalOptions: [String] = ["Lose Weight", "Maintain", "Lean Bulk"]
     
@@ -23,14 +27,36 @@ struct GoalsView: View {
                 
                 CustomSegmentedPicker(selection: $fitnessGoal, title: "What is your current lifting goal?", optionsArray: fitnessGoalOptions)
                 
+//                TODO: What is your goal weight?
+                
+//                TODO: What is your goal step count?
+                
+//                TODO: What is your goal water intake?
+                
+            
+                
                 Spacer()
-                Button("Next") {
-                    router.showScreen(.push) { router in
-                        MacroCalculationView(router: router)
+               
+                HStack {
+                    ButtonView(title: "Next") {
+                        currentExperience = experience
+                        currentFitnessGoal = fitnessGoal
+                        
+                        router.showScreen(.fullScreenCover) { router in
+                            MacroCalculationView(router: router)
+//                            DashboardView(router: router)
+                        }
                     }
                 }
+                .padding()
             }
             .navigationTitle("Your Goals")
+            .onAppear {
+                
+                experience = currentExperience ?? ""
+                fitnessGoal = currentFitnessGoal ?? ""
+//                dob = Date(currentUsersDOB) ?? Date()
+            }
     }
 }
 

@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct Colors {
+    
+    static let blue: String = "Blue"
+    static let mfBluePrimary: String = "AccentColor"
+}

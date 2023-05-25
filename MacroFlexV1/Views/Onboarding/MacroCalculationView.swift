@@ -10,6 +10,9 @@ import SwiftfulRouting
 
 struct MacroCalculationView: View {
     let router: AnyRouter
+    
+    @AppStorage("onboarding") var isOnboarding: Bool?
+    
     var body: some View {
         VStack {
             
@@ -137,11 +140,13 @@ struct MacroCalculationView: View {
             
             
             Spacer()
-            Button("Go to dashboard 🚀") {
+            ButtonView(title: "Go to dashboard 🚀") {
+                isOnboarding = false
                 router.showScreen(.fullScreenCover) { router in
                     DashboardView(router: router)
                 }
             }
+            .padding(.bottom, 15)
         }
         .navigationTitle("Your Macros")
         .padding(.horizontal)
