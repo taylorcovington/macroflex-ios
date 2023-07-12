@@ -296,26 +296,10 @@ func getIt() async throws {
     
     let (data, response) = try await URLSession.shared.data(for: urlRequest)
     
-//    guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-//        let errorData = try JSONDecoder().decode(ErrorData.self, from: <#T##Data#>).message
-//        print("Error \(errorData)")
-//    }
     let jsonData = try JSONDecoder().decode(TempDashData.self, from: data)
 
     print(jsonData.data)
 
-    
-
-    
-    
-    
-//
-//    "data": {
-//            "users": 9655,
-//            "active": 9173,
-//            "churned": 482,
-//            "latest": 231
-//        }
 }
 struct TempDashData: Codable {
     let data: TempData

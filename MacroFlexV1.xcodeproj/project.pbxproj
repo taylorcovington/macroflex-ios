@@ -70,7 +70,6 @@
 		89BAF0092A33C8100013F97E /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 89BAF0082A33C8100013F97E /* FirebaseStorage */; };
 		89BAF00E2A33CD3D0013F97E /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BAF00D2A33CD3D0013F97E /* ContentViewModel.swift */; };
 		89BAF0102A33D2A60013F97E /* Signup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BAF00F2A33D2A60013F97E /* Signup.swift */; };
-		89BAF0122A33D3FE0013F97E /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BAF0112A33D3FE0013F97E /* RegistrationViewModel.swift */; };
 		89BAF0152A392AD50013F97E /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = 89BAF0142A392AD50013F97E /* Supabase */; };
 /* End PBXBuildFile section */
 
@@ -134,7 +133,6 @@
 		89BAEFFF2A33C7030013F97E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		89BAF00D2A33CD3D0013F97E /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		89BAF00F2A33D2A60013F97E /* Signup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Signup.swift; sourceTree = "<group>"; };
-		89BAF0112A33D3FE0013F97E /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -343,7 +341,6 @@
 				8963AAD42A215DE500AFE76D /* Login.swift */,
 				8923ECCA2A295691003AF347 /* AuthViewModel.swift */,
 				89BAF00F2A33D2A60013F97E /* Signup.swift */,
-				89BAF0112A33D3FE0013F97E /* RegistrationViewModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -497,7 +494,6 @@
 				893138EC29DB8ED100FDF70B /* Icons.swift in Sources */,
 				8946B2EF29E6043E00AEFD7B /* Activity.swift in Sources */,
 				8934134529D78D0500D9457B /* MacrosView.swift in Sources */,
-				89BAF0122A33D3FE0013F97E /* RegistrationViewModel.swift in Sources */,
 				893138E829DB8EBB00FDF70B /* Colors.swift in Sources */,
 				8946B2E329E0D4C500AEFD7B /* ButtonView.swift in Sources */,
 				8946B2D529E0CA4E00AEFD7B /* GoalsView.swift in Sources */,
