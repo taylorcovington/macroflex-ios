@@ -37,12 +37,18 @@ class AuthViewModel: ObservableObject {
             }
 
             if let response = try? JSONDecoder().decode(LoginResponse.self, from: data) {
-              if let errorMessage = response.message, let inputError = response.inputError, inputError == "password" {
-                  completion(false, errorMessage)
-              } else {
-                  self.isAuthenticated = true
-                  completion(true, nil)
-              }
+                if let errorMessage = response.message {
+                    if let inputError = response.inputError, inputError == "password" {
+                        print("There was a password error")
+                        completion(false, errorMessage)
+                    } else {
+                        print("There was an error but not a password error")
+                        completion(false, errorMessage)
+                    }
+                } else {
+                    self.isAuthenticated = true
+                    completion(true, nil)
+                }
           } else {
               completion(false, "Invalid Response")
           }
