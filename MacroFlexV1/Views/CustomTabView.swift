@@ -10,12 +10,13 @@ import SwiftfulRouting
 
 struct CustomTabView: View {
     let router: AnyRouter
-       
+    @ObservedObject var authViewModel: AuthViewModel
+    
     var body: some View {
         VStack {
             ZStack {
                 TabView {
-                    DashboardView(router: router)
+                    DashboardView(router: router, authViewModel: AuthViewModel())
                         .tabItem {
                             Image(systemName: "list.clipboard.fill")
                             Text("Today")
@@ -58,7 +59,7 @@ struct CustomTabView: View {
 struct CustomTabView_Previews: PreviewProvider {
     static var previews: some View {
         RouterView { router in
-            CustomTabView(router: router)
+            CustomTabView(router: router, authViewModel: AuthViewModel())
         }
     }
 }

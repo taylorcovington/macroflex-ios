@@ -8,13 +8,17 @@
 import SwiftUI
 
 struct AccountView: View {
+    @ObservedObject var authViewModel: AuthViewModel
     var body: some View {
         Text("Account View")
+        Button("Logout") {
+            authViewModel.logout()
+        }
     }
 }
 
 struct AccountView_Previews: PreviewProvider {
     static var previews: some View {
-        AccountView()
+        AccountView(authViewModel: AuthViewModel())
     }
 }

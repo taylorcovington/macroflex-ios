@@ -15,7 +15,7 @@ struct BodyStatsView: View {
             Text("Body stats View")
             Button("Next") {
                 router.showScreen(.push) { router in
-                    MacroCalculationView(router: router)
+                    MacroCalculationView(router: router, authViewModel: AuthViewModel())
                 }
             }
         }
