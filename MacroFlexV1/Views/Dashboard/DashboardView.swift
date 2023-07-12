@@ -10,9 +10,11 @@ import SwiftfulRouting
 
 struct DashboardView: View {
     let router: AnyRouter
-    
+    @State private var data = [TempDashData]()
+    @ObservedObject var authViewModel: AuthViewModel
     //temporary
     @AppStorage("onboarding") var isOnboarding: Bool?
+    
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
@@ -26,7 +28,7 @@ struct DashboardView: View {
                             .frame(width: 30, height: 30)
                             .onTapGesture {
                                 router.showScreen(.push) { router in
-                                    AccountView()
+                                    AccountView(authViewModel: authViewModel)
                                 }
                             }
 
@@ -59,8 +61,18 @@ struct DashboardView: View {
 //                }
 //            }
         }
+        .onAppear() {
+            Task {
+                do {
+                    try await getIt()
+                } catch {
+                    print("something went wrong")
+                }
+            }
+        }
      
     }
+    
 }
 
 struct welcomeText: View {
@@ -109,9 +121,7 @@ struct todayView: View {
                 router.showScreen(.fullScreenCover) { router in
                     ExerciseView()
                 }
-                
             }
-
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .cornerRadius(25)
@@ -272,13 +282,60 @@ struct todaysProgressView: View {
             }
            
         }
+       
     }
+    
+}
+
+func getIt() async throws {
+    let url = URL(string: "http://192.168.1.209:8080/api/demo/stats")!
+//    "https://macroflex-server-stg.herokuapp.com/api/demo/stats")!
+    
+    var urlRequest = URLRequest(url: url)
+    urlRequest.httpMethod = "GET"
+    
+    let (data, response) = try await URLSession.shared.data(for: urlRequest)
+    
+//    guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+//        let errorData = try JSONDecoder().decode(ErrorData.self, from: <#T##Data#>).message
+//        print("Error \(errorData)")
+//    }
+    let jsonData = try JSONDecoder().decode(TempDashData.self, from: data)
+
+    print(jsonData.data)
+
+    
+
+    
+    
+    
+//
+//    "data": {
+//            "users": 9655,
+//            "active": 9173,
+//            "churned": 482,
+//            "latest": 231
+//        }
+}
+struct TempDashData: Codable {
+    let data: TempData
+}
+
+struct TempData: Codable {
+    let users: Int
+    let active: Int
+    let churned: Int
+    let latest: Int
+}
+
+struct ErrorData: Codable {
+    var message: String
 }
 
 struct DashboardView_Previews: PreviewProvider {
     static var previews: some View {
         RouterView { router in
-            DashboardView(router: router)
+            DashboardView(router: router, authViewModel: AuthViewModel())
         }
     }
 }

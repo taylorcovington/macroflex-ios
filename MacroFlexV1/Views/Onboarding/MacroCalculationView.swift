@@ -10,7 +10,7 @@ import SwiftfulRouting
 
 struct MacroCalculationView: View {
     let router: AnyRouter
-    
+    @ObservedObject var authViewModel: AuthViewModel
     @AppStorage("onboarding") var isOnboarding: Bool?
     
     var body: some View {
@@ -143,7 +143,7 @@ struct MacroCalculationView: View {
             ButtonView(title: "Go to dashboard 🚀") {
                 isOnboarding = false
                 router.showScreen(.fullScreenCover) { router in
-                    DashboardView(router: router)
+                    DashboardView(router: router, authViewModel: AuthViewModel())
                 }
             }
             .padding(.bottom, 15)
@@ -157,7 +157,7 @@ struct MacroCalculationView: View {
 struct MacroCalculationView_Previews: PreviewProvider {
     static var previews: some View {
         RouterView { router in
-            MacroCalculationView(router: router)
+            MacroCalculationView(router: router, authViewModel: AuthViewModel())
         }
     }
 }

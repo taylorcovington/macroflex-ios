@@ -43,7 +43,7 @@ struct GoalsView: View {
                         currentFitnessGoal = fitnessGoal
                         
                         router.showScreen(.fullScreenCover) { router in
-                            MacroCalculationView(router: router)
+                            MacroCalculationView(router: router, authViewModel: AuthViewModel())
 //                            DashboardView(router: router)
                         }
                     }

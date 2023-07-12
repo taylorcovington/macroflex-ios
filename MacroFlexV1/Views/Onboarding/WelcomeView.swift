@@ -31,9 +31,14 @@ struct WelcomeView: View {
                 }
               
             }
+            
            
     }
+        
+      
 }
+
+
     
     // MARK: - Item:
 

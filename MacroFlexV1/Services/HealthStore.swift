@@ -89,7 +89,7 @@ class HealthStore {
                   for sample in samples {
                       
                       let bodyMass = sample.quantity.doubleValue(for: HKUnit.pound())
-                      print("Body mass: \(bodyMass) lbs, date: \(sample.startDate.displayFormat)")
+//                      print("Body mass: \(bodyMass) lbs, date: \(sample.startDate.displayFormat)")
 //                      if bodyMass == nil { return }
                       let stat = HealthStat(stat: bodyMass, date: sample.startDate)
                       
@@ -139,7 +139,7 @@ class HealthStore {
             if let latestWeightSample = result.mostRecentQuantity() {
                    let weight = latestWeightSample.doubleValue(for: HKUnit.pound())
                    // Do something with the weight, e.g. update UI
-                print("BodyMass >>>>> \(weight)")
+//                print("BodyMass >>>>> \(weight)")
                 completion(weight)
                }
         }
@@ -179,7 +179,7 @@ class HealthStore {
             completion(healthStats)
         }
         
-        print("average: ", averagec(numbers: countArr))
+//        print("average: ", averagec(numbers: countArr))
         
         guard let query = query else {
             print("there was no query, returning")
