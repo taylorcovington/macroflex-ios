@@ -17,7 +17,7 @@ struct Activity: Identifiable {
         Activity(id: "stepCount", name: "Steps", image: "runningshoe"),
         Activity(id: "bodyMass", name: "Weight", image: "weightscale"),
 //        Activity(id: "stepCount", name: "Steps", image: "runningshoe"),
-        Activity(id: "appleExerciseTime", name: "Exercise Time", image: "stopwatch"),
+//        Activity(id: "appleExerciseTime", name: "Exercise Time", image: "stopwatch"),
         ]
     }
 }

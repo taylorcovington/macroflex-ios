@@ -33,7 +33,7 @@ struct DashboardView: View {
                             }
 
                     }
-                    welcomeText()
+                    welcomeText(authViewModel: authViewModel)
                     
                     todayView(router: router)
                     
@@ -61,15 +61,15 @@ struct DashboardView: View {
 //                }
 //            }
         }
-        .onAppear() {
-            Task {
-                do {
-                    try await getIt()
-                } catch {
-                    print("something went wrong")
-                }
-            }
-        }
+//        .onAppear() {
+//            Task {
+//                do {
+//                    try await getIt()
+//                } catch {
+//                    print("something went wrong")
+//                }
+//            }
+//        }
      
     }
     
@@ -79,6 +79,7 @@ struct welcomeText: View {
     
 //    @StateObject private var viewModel = DashboardViewModel()
 //    @AppStorage(Settings.firstNameKey) var firstName: String?
+    @ObservedObject var authViewModel: AuthViewModel
     @AppStorage("name") var currentUsersName: String?
     var body: some View {
         HStack {
@@ -88,7 +89,8 @@ struct welcomeText: View {
                     .font(.system(size: 16, weight: .regular, design: .rounded))
                     .foregroundColor(Color(Colors.mfBluePrimary))
 //                Text("\(viewModel.greetingText), \(firstName ?? 👋")
-                Text("Welcome, \(currentUsersName ?? "friend") 👋")
+//                Text(authViewModel.loggedInUser ?? "not available")
+                Text("Welcome, \(authViewModel.loggedInUser?.name ?? currentUsersName ?? "Friend") 👋")
                         .font(.system(size: 28, weight: .bold, design: .rounded))
                         .padding(.bottom)
             }
@@ -138,8 +140,10 @@ struct todayView: View {
 struct todaysProgressView: View {
     let router: AnyRouter
     
-    @ObservedObject var viewModelSteps = DashboardViewModel(activity: Activity.allActivities()[0])
-    @ObservedObject var viewModelWeight = DashboardViewModel(activity: Activity.allActivities()[1])
+    @ObservedObject var viewModel = DashboardViewModel.shared
+
+//    @ObservedObject var viewModelSteps = DashboardViewModel(activity: Activity.allActivities()[0])
+//    @ObservedObject var viewModelWeight = DashboardViewModel(activity: Activity.allActivities()[1])
     
     var body: some View {
         Text("Today's Progress")
@@ -151,7 +155,7 @@ struct todaysProgressView: View {
                         .resizable()
                         .frame(width: 100, height: 100)
                      
-                    Text("\(viewModelSteps.healthStatToday)")
+                    Text("\(viewModel.healthStatToday)")
                         .font(.system(size: 24, weight: .bold, design: .rounded))
                     Text("Steps")
                         .font(.system(size: 12, weight: .regular, design: .rounded))
@@ -164,7 +168,7 @@ struct todaysProgressView: View {
                 .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 12, style: .continuous))
                 .onTapGesture {
                     router.showScreen(.push) { router in
-                        StepsView()
+                        StepsView(router: router)
                     }
                 }
             
@@ -174,7 +178,7 @@ struct todaysProgressView: View {
                         .resizable()
                         .frame(width: 75, height: 75)
                      
-                    Text("\(viewModelWeight.todaysWeight, specifier: "%.1f")")
+                    Text("\(viewModel.todaysWeight, specifier: "%.1f")")
                         .font(.system(size: 24, weight: .bold, design: .rounded))
                     Text("Weight")
                         .font(.system(size: 12, weight: .regular, design: .rounded))
@@ -286,21 +290,21 @@ struct todaysProgressView: View {
     }
     
 }
-
-func getIt() async throws {
-    let url = URL(string: "http://192.168.1.209:8080/api/demo/stats")!
-//    "https://macroflex-server-stg.herokuapp.com/api/demo/stats")!
-    
-    var urlRequest = URLRequest(url: url)
-    urlRequest.httpMethod = "GET"
-    
-    let (data, response) = try await URLSession.shared.data(for: urlRequest)
-    
-    let jsonData = try JSONDecoder().decode(TempDashData.self, from: data)
-
-    print(jsonData.data)
-
-}
+//
+//func getIt() async throws {
+//    let url = URL(string: "http://192.168.1.209:8080/api/demo/stats")!
+////    "https://macroflex-server-stg.herokuapp.com/api/demo/stats")!
+//
+//    var urlRequest = URLRequest(url: url)
+//    urlRequest.httpMethod = "GET"
+//
+//    let (data, response) = try await URLSession.shared.data(for: urlRequest)
+//
+//    let jsonData = try JSONDecoder().decode(TempDashData.self, from: data)
+//
+//    print(jsonData.data)
+//
+//}
 struct TempDashData: Codable {
     let data: TempData
 }

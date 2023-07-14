@@ -9,7 +9,7 @@ import SwiftUI
 import Charts
 
 struct WeightTrackingView: View {
-    @ObservedObject var viewModel = DashboardViewModel(activity: Activity.allActivities()[1])
+    @ObservedObject var viewModel = DashboardViewModel.shared
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {

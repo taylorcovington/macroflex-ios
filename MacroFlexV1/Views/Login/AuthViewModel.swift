@@ -13,16 +13,31 @@ class AuthViewModel: ObservableObject {
     @Published var isAuthenticated = false
     private let tokenKey = "AuthToken"
     
+    @Published var loggedInUser: LoggedInUser?
+    
+    
+    
+    
+    
+    
     init() {
+//        TODO: the server has an endpoint to check this
+//        console.log('Checking authentication status 🔑');
+//        const res = await Axios({ method: 'get', url: '/api/auth' });
         checkTokenExpiration()
     }
 
     func authenticateUser(with request: LoginRequest, completion: @escaping (Bool, String?) -> Void) {
         // Perform API request to authenticate the user
         // Assuming the API endpoint is /login and returns a result
-        guard let url = URL(string: "http://192.168.1.209:8080/api/auth") else {
-            return
-        }
+//        guard let url = URL(string: "http://192.168.1.209:8080/api/auth") else {
+//            return
+//        }
+        
+        guard let url = URL(string: "https://macroflex-server-stg.herokuapp.com/api/auth") else {
+                  return
+              }
+    
 
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "POST"
@@ -46,8 +61,22 @@ class AuthViewModel: ObservableObject {
                         completion(false, errorMessage)
                     }
                 } else {
-                    self.isAuthenticated = true
-                    completion(true, nil)
+                    guard let loggedInUser = try? JSONDecoder().decode(LoggedInUser.self, from: data) else {
+                                completion(false, "Failed to decode logged in user")
+                                return
+                            }
+                    
+                   
+//                    self.loggedInUser = loggedInUser
+//                    self.isAuthenticated = true
+                    
+                    DispatchQueue.main.async {
+                        print("LOGGED IN USER: \(loggedInUser)")
+                        self.loggedInUser = loggedInUser
+                        self.isAuthenticated = true
+                        self.saveAuthToken(loggedInUser.token)
+                        completion(true, nil)
+                    }
                 }
           } else {
               completion(false, "Invalid Response")

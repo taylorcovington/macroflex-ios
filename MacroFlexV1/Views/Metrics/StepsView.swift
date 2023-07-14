@@ -7,10 +7,13 @@
 
 import SwiftUI
 import Charts
+import SwiftfulRouting
 
 struct StepsView: View {
-    
-    @ObservedObject var viewModel = DashboardViewModel(activity: Activity.allActivities()[0])
+    let router: AnyRouter
+    @State private var stepCount = ""
+    @State private var selectedDate = Date()
+    @ObservedObject var viewModel = DashboardViewModel.shared
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
@@ -105,11 +108,67 @@ struct StepsView: View {
             .navigationBarTitle("Steps")
         .padding()
         }
+        .navigationBarItems(trailing:
+
+          Button("Add Data") {
+            Button("Resizable Sheet") {
+                router.showResizableSheet(
+                    sheetDetents: [.medium, .large],
+                    selection: nil,
+                    showDragIndicator: true) { router in
+                        MyView(router: router)
+                    }
+            }
+//                Text("Sample")
+//                    .frame(width: 275, height: 450)
+//                    .background(Color.blue)
+//                    .cornerRadius(10)
+//                    .onTapGesture {
+//                        router.dismissModal()
+//                    }
+                
+               
+                
+            
+        }
+       )
+    }
+}
+
+struct MyView: View {
+    @State private var stepCount = ""
+    @State private var selectedDate = Date()
+    let router: AnyRouter
+    
+    
+    var body: some View {
+        VStack {
+            Text("Add Steps")
+                .font(.system(size: 24, weight: .bold, design: .rounded))
+                .padding()
+            TextField("Steps", text: $stepCount)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding()
+            DatePicker("Date", selection: $selectedDate, displayedComponents: .date)
+                .padding()
+            HStack {
+                Button("Cancel") {
+                    router.dismissModal()
+                }
+                .padding()
+                Spacer()
+                Button("Add") {
+                    
+                }
+            }
+        }
     }
 }
 
 struct StepsView_Previews: PreviewProvider {
     static var previews: some View {
-        StepsView()
+        RouterView { router in
+            StepsView(router: router)
+        }
     }
 }
