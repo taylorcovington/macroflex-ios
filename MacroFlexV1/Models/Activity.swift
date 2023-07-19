@@ -1,10 +1,3 @@
-//
-//  Activities.swift
-//  MacroFlexV1
-//
-//  Created by Taylor Covington on 4/11/23.
-//
-
 import Foundation
 
 struct Activity: Identifiable {
@@ -14,10 +7,12 @@ struct Activity: Identifiable {
     
     static func allActivities() -> [Activity] {
         return [
-        Activity(id: "stepCount", name: "Steps", image: "runningshoe"),
-        Activity(id: "bodyMass", name: "Weight", image: "weightscale"),
-//        Activity(id: "stepCount", name: "Steps", image: "runningshoe"),
-//        Activity(id: "appleExerciseTime", name: "Exercise Time", image: "stopwatch"),
+            Activity(id: "stepCount", name: "Steps", image: "runningshoe"),
+            Activity(id: "bodyMass", name: "Weight", image: "weightscale"),
+            Activity(id: "sleep", name: "Sleep", image: "moon"),
+            Activity(id: "waterIntake", name: "Water Intake", image: "waterdrop"),
+            Activity(id: "exerciseTime", name: "Exercise Time", image: "dumbbell"),
         ]
     }
 }
+

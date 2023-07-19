@@ -14,6 +14,7 @@ class HealthStore {
     var healthStore: HKHealthStore?
     var query: HKStatisticsCollectionQuery?
     
+    
     init() {
         if HKHealthStore.isHealthDataAvailable() {
             healthStore =  HKHealthStore()
@@ -21,20 +22,25 @@ class HealthStore {
     }
     
     func requestAuth() {
-//        let stepCount = HKQuantityType.quantityType(forIdentifier: .stepCount)
-//        let weight = HKQuantityType.quantityType(forIdentifier: .bodyMass)
-//        let exerciseTime = HKObjectType.quantityType(forIdentifier: .appleExerciseTime)!
-        let allTypesToShare = Set([HKObjectType.workoutType(),
-                            HKObjectType.quantityType(forIdentifier: .stepCount)!,
-                            HKObjectType.quantityType(forIdentifier: .bodyMass)!,
-//                            HKObjectType.quantityType(forIdentifier: .appleExerciseTime)!,
-                           ])
-        
-        let allTypesToRead = Set([HKObjectType.workoutType(),
-                                 HKObjectType.quantityType(forIdentifier: .stepCount)!,
-                                 HKObjectType.quantityType(forIdentifier: .bodyMass)!,
-                                 HKObjectType.quantityType(forIdentifier: .appleExerciseTime)!,
-                                ])
+        let sleepType = HKObjectType.categoryType(forIdentifier: .sleepAnalysis)!
+        let waterType = HKObjectType.quantityType(forIdentifier: .dietaryWater)!
+        let allTypesToShare = Set([
+            HKObjectType.workoutType(),
+            HKObjectType.quantityType(forIdentifier: .stepCount)!,
+            HKObjectType.quantityType(forIdentifier: .bodyMass)!,
+//            HKObjectType.quantityType(forIdentifier: .appleExerciseTime)!,
+            sleepType, // Sleep
+            waterType // Water intake
+        ])
+        let allTypesToRead = Set([
+            HKObjectType.workoutType(),
+            HKObjectType.quantityType(forIdentifier: .stepCount)!,
+            HKObjectType.quantityType(forIdentifier: .bodyMass)!,
+            HKObjectType.quantityType(forIdentifier: .appleExerciseTime)!,
+            sleepType, // Sleep
+            waterType // Water intake
+        ])
+
 
      
 
@@ -77,36 +83,157 @@ class HealthStore {
         let anchorDate = Date.firstDayOfWeek()
         let dailyComponent = DateComponents(day: 1)
         
-//        var countArr: [Double] = []
-        
         let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictEndDate)
                 
         let bodyMassType = HKSampleType.quantityType(forIdentifier: .bodyMass)!
-          let query = HKSampleQuery(sampleType: bodyMassType, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: nil) { query, results, error in
-              if let error = error {
-                  print("Error querying body mass: \(error.localizedDescription)")
-              } else if let samples = results as? [HKQuantitySample] {
-                  for sample in samples {
-                      
-                      let bodyMass = sample.quantity.doubleValue(for: HKUnit.pound())
-//                      print("Body mass: \(bodyMass) lbs, date: \(sample.startDate.displayFormat)")
-//                      if bodyMass == nil { return }
-                      let stat = HealthStat(stat: bodyMass, date: sample.startDate)
-                      
-                      healthStats.append(stat)
-                  }
-                  
-//                  healthStats.append(HealthStat(stat: 158.6, date: Date(timeInterval: 2023-04-08, since: 22,:40:46 +0000)))
-                  completion(healthStats)
-              }
-          }
+        let query = HKSampleQuery(sampleType: bodyMassType, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: nil) { query, results, error in
+            if let error = error {
+                print("Error querying body mass: \(error.localizedDescription)")
+            } else if let samples = results as? [HKQuantitySample] {
+                for sample in samples {
+                    let bodyMass = sample.quantity.doubleValue(for: HKUnit.pound())
+                    let stat = HealthStat(stat: bodyMass, date: sample.startDate)
+                    healthStats.append(stat)
+                }
+                completion(healthStats)
+            }
+        }
         
-//        guard let query = query else {
-//            print("there was no query, returning")
-//            return
-//        }
         store.execute(query)
     }
+    
+    func requestSleepData(completion: @escaping ([HealthStat]) -> Void) {
+        guard let store = healthStore,
+              let sleepType = HKObjectType.categoryType(forIdentifier: .sleepAnalysis) else {
+            return
+        }
+        
+        var healthStats = [HealthStat]()
+        
+        let startDate = Calendar.current.date(byAdding: .day, value: -7, to: Date()) ?? Date()
+        let endDate = Date()
+        
+        let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictEndDate)
+        
+        let query = HKSampleQuery(sampleType: sleepType, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: nil) { query, results, error in
+            if let error = error {
+                print("Error querying sleep data: \(error.localizedDescription)")
+            } else if let samples = results as? [HKCategorySample] {
+                for sample in samples {
+                    let sleepDuration = sample.endDate.timeIntervalSince(sample.startDate)
+                    let stat = HealthStat(stat: sleepDuration, date: sample.startDate)
+                    healthStats.append(stat)
+                }
+                completion(healthStats)
+            }
+        }
+        
+        store.execute(query)
+    }
+    
+    func requestSleepDataForToday(completion: @escaping (Double) -> Void) {
+        guard let store = healthStore,
+              let sleepType = HKObjectType.categoryType(forIdentifier: .sleepAnalysis) else {
+            return
+        }
+        
+        let calendar = Calendar.current
+        let startDate = calendar.startOfDay(for: Date())
+        let endDate = Date()
+        
+        let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictStartDate)
+        
+        let query = HKSampleQuery(sampleType: sleepType, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: nil) { query, results, error in
+            if let error = error {
+                print("Error querying sleep data for today: \(error.localizedDescription)")
+            } else if let samples = results as? [HKCategorySample] {
+                var totalSleepDurationInSeconds: TimeInterval = 0.0
+                
+                for sample in samples {
+                    totalSleepDurationInSeconds += sample.endDate.timeIntervalSince(sample.startDate)
+                }
+                
+                // Convert sleep duration to minutes
+                let totalSleepDurationInMinutes = totalSleepDurationInSeconds / 60.0
+                
+                // Call the completion handler with the total sleep duration in minutes
+                completion(totalSleepDurationInMinutes)
+            } else {
+                // If no sleep data is available for today, return 0 minutes
+                completion(0)
+            }
+        }
+        
+        store.execute(query)
+    }
+
+
+
+    func requestWaterIntakeData(completion: @escaping ([HealthStat]) -> Void) {
+        guard let store = healthStore,
+              let waterType = HKObjectType.quantityType(forIdentifier: .dietaryWater) else {
+            return
+        }
+        
+        var healthStats = [HealthStat]()
+        
+        let startDate = Calendar.current.date(byAdding: .day, value: -7, to: Date()) ?? Date()
+        let endDate = Date()
+        
+        let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictEndDate)
+        
+        let query = HKSampleQuery(sampleType: waterType, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: nil) { query, results, error in
+            if let error = error {
+                print("Error querying water intake data: \(error.localizedDescription)")
+            } else if let samples = results as? [HKQuantitySample] {
+                for sample in samples {
+                    let waterIntake = sample.quantity.doubleValue(for: HKUnit.fluidOunceUS())
+                    let stat = HealthStat(stat: waterIntake, date: sample.startDate)
+                    healthStats.append(stat)
+                }
+                completion(healthStats)
+            }
+        }
+        
+        store.execute(query)
+    }
+    
+    func requestWaterIntakeDataForToday(completion: @escaping ([HealthStat]) -> Void) {
+        guard let store = healthStore,
+              let waterType = HKObjectType.quantityType(forIdentifier: .dietaryWater) else {
+            return
+        }
+        
+        let calendar = Calendar.current
+        let startDate = calendar.startOfDay(for: Date())
+        let endDate = Date()
+        
+        let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictStartDate)
+        
+        let query = HKSampleQuery(sampleType: waterType, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: nil) { query, results, error in
+            if let error = error {
+                print("Error querying water intake data for today: \(error.localizedDescription)")
+            } else if let samples = results as? [HKQuantitySample] {
+                var totalWaterIntakeInFluidOunces: Double = 0.0
+                
+                for sample in samples {
+                    totalWaterIntakeInFluidOunces += sample.quantity.doubleValue(for: HKUnit.fluidOunceUS())
+                }
+                
+                // Create a HealthStat object to store the water intake data for today
+                let waterIntakeStat = HealthStat(stat: totalWaterIntakeInFluidOunces, date: startDate)
+                
+                // Call the completion handler with the water intake data for today
+                completion([waterIntakeStat])
+            } else {
+                // If no water intake data is available for today, return an empty array
+                completion([])
+            }
+        }
+        
+        store.execute(query)
+    }
+
     
     func requestBodyWeightToday(completion: @escaping (Double) -> Void) {
         
@@ -146,78 +273,111 @@ class HealthStore {
 
         store.execute(query)
     }
-
     
-    func requestHealthStat(by category: String, completion: @escaping ([HealthStat]) -> Void) {
-        guard let store = healthStore, let type = HKObjectType.quantityType(forIdentifier: typeByCategory(category: category)) else {
+    func requestExerciseTimeForToday(completion: @escaping (Double) -> Void) {
+        guard let store = healthStore,
+              let exerciseTimeType = HKObjectType.quantityType(forIdentifier: .appleExerciseTime) else {
             return
         }
-        
-        let startDate = Calendar.current.date(byAdding: .day, value: -7, to: Date()) ?? Date()
-        let endDate = Date()
-        let anchorDate = Date.firstDayOfWeek()
-        let dailyComponent = DateComponents(day: 1)
-        
-        var healthStats = [HealthStat]()
-        
-        var countArr: [Double] = []
-        
-        let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictEndDate)
 
-        query = HKStatisticsCollectionQuery(quantityType: type, quantitySamplePredicate: predicate, options: optionByCategory(category: category), anchorDate: anchorDate, intervalComponents: dailyComponent)
-        
-        query?.initialResultsHandler = { query, statistics, error in
-            if (error != nil) { print("there was an error during query: \(String(describing: error))") }
-            statistics?.enumerateStatistics(from: startDate, to: endDate, with: { stats, _ in
-//                var statItem: Double = 0
-                let statItem = (stats.sumQuantity()?.doubleValue(for: .count()))
-//                countArr.append(statItem!)
-                
-                let stat = HealthStat(stat: statItem, date: stats.startDate)
-                healthStats.append(stat)
-            })
-            completion(healthStats)
-        }
-        
-//        print("average: ", averagec(numbers: countArr))
-        
-        guard let query = query else {
-            print("there was no query, returning")
-            return
-        }
-        
-        store.execute(query)
-        
-    }
-    
-    func requestHealthStatToday(by category: String,completion: @escaping (Int) -> Void) {
-        
-        guard let store = healthStore, let type = HKObjectType.quantityType(forIdentifier: typeByCategory(category: category)) else {
-            print("returning with NOTHING")
-            return
-        }
-        
-       
         let calendar = Calendar.current
         let startDate = calendar.startOfDay(for: Date())
         let endDate = Date()
-        
+
         let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictStartDate)
 
-        let query = HKStatisticsQuery(quantityType: type, quantitySamplePredicate: predicate, options: .cumulativeSum) { (query, result, error) in
-            guard let result = result, let sum = result.sumQuantity() else {
-                // Query failed
-                print("query failed: \(error)")
-                return
+        let query = HKStatisticsQuery(quantityType: exerciseTimeType, quantitySamplePredicate: predicate, options: .cumulativeSum) { query, result, error in
+            if let error = error {
+                print("Error querying exercise time for today: \(error.localizedDescription)")
+                completion(0)
+            } else if let result = result, let exerciseTime = result.sumQuantity() {
+                let seconds = exerciseTime.doubleValue(for: HKUnit.second())
+                let minutes = seconds / 60.0
+                completion(minutes)
+            } else {
+                // If no exercise time data is available for today, return 0 minutes
+                completion(0)
             }
-            
-            let todayStat = Int(sum.doubleValue(for: HKUnit.count()))
-            completion(todayStat)
-           
         }
 
         store.execute(query)
     }
+
+
+    
+//    MARK: Get steps
+    func requestHealthStat(by category: String, completion: @escaping ([HealthStat]) -> Void) {
+         guard let store = healthStore, let type = HKObjectType.quantityType(forIdentifier: typeByCategory(category: category)) else {
+             return
+         }
+         
+         let startDate = Calendar.current.date(byAdding: .day, value: -7, to: Date()) ?? Date()
+         let endDate = Date()
+         let anchorDate = Date.firstDayOfWeek()
+         let dailyComponent = DateComponents(day: 1)
+         
+         var healthStats = [HealthStat]()
+         
+         var countArr: [Double] = []
+         
+         let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictEndDate)
+
+         query = HKStatisticsCollectionQuery(quantityType: type, quantitySamplePredicate: predicate, options: optionByCategory(category: category), anchorDate: anchorDate, intervalComponents: dailyComponent)
+         
+         query?.initialResultsHandler = { query, statistics, error in
+             if (error != nil) { print("there was an error during query: \(String(describing: error))") }
+             statistics?.enumerateStatistics(from: startDate, to: endDate, with: { stats, _ in
+ //                var statItem: Double = 0
+                 let statItem = (stats.sumQuantity()?.doubleValue(for: .count()))
+ //                countArr.append(statItem!)
+                 
+                 let stat = HealthStat(stat: statItem, date: stats.startDate)
+                 healthStats.append(stat)
+             })
+             completion(healthStats)
+         }
+         
+ //        print("average: ", averagec(numbers: countArr))
+         
+         guard let query = query else {
+             print("there was no query, returning")
+             return
+         }
+         
+         store.execute(query)
+         
+     }
+     
+//    MARK: Get steps
+     func requestHealthStatToday(by category: String,completion: @escaping (Int) -> Void) {
+         
+         guard let store = healthStore, let type = HKObjectType.quantityType(forIdentifier: typeByCategory(category: category)) else {
+             print("returning with NOTHING")
+             return
+         }
+         
+        
+         let calendar = Calendar.current
+         let startDate = calendar.startOfDay(for: Date())
+         let endDate = Date()
+         
+         let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictStartDate)
+
+         let query = HKStatisticsQuery(quantityType: type, quantitySamplePredicate: predicate, options: .cumulativeSum) { (query, result, error) in
+             guard let result = result, let sum = result.sumQuantity() else {
+                 // Query failed
+                 print("query failed: \(error)")
+                 return
+             }
+             
+             let todayStat = Int(sum.doubleValue(for: HKUnit.count()))
+             completion(todayStat)
+            
+         }
+
+         store.execute(query)
+     }
+
     
     func averagec(numbers:[Double]) -> Double {
         return (Double(numbers.reduce(0,+))/Double(numbers.count)).rounded(.towardZero)

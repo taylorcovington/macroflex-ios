@@ -16,11 +16,14 @@ final class DashboardViewModel: ObservableObject {
     @Published var healthData = [HealthStat]()
     @Published var healthStatToday: Int = 0
     @Published var todaysWeight: Double = 0
+    @Published var todaysSleep: Double = 0
+    @Published var todaysWaterIntake: Double = 0
+    @Published var todayExerciseTime: Double = 0
     private let tokenKey = "AuthToken"
     
     
     func sendDataToServer(urlString: String, data: [String: Any]) {
-        guard let url = URL(string: urlString) else {
+        guard let url = URL(string: "http://192.168.1.209:8080/api/\(urlString)") else {
             print("Invalid URL")
             return
         }
@@ -70,7 +73,7 @@ final class DashboardViewModel: ObservableObject {
                         print("Today's health stat: \(hStat)")
                         self.healthStatToday = hStat
                         let stepCountData = ["step_amount": hStat, "date": self.getCurrentDate()] as [String : Any]
-                        self.sendDataToServer(urlString: "http://192.168.1.209:8080/api/step_logs", data: stepCountData)
+                        self.sendDataToServer(urlString: "step_logs", data: stepCountData)
                         
                     }
                 case "bodyMass":
@@ -82,8 +85,36 @@ final class DashboardViewModel: ObservableObject {
                         print("Today's body weight: \(hStat)")
                         self.todaysWeight = hStat
                         let weightData = ["weight": hStat, "date": self.getCurrentDate()] as [String : Any]
-                        self.sendDataToServer(urlString: "http://192.168.1.209:8080/api/weight_logs", data: weightData)
+                        self.sendDataToServer(urlString: "weight_logs", data: weightData)
                     }
+                case "sleep":
+                    self.healthStore.requestSleepDataForToday { sleepDurationInMinutes in
+                           DispatchQueue.main.async {
+                               print("Sleep duration for today: \(sleepDurationInMinutes) minutes")
+                               self.todaysSleep = sleepDurationInMinutes
+                               let sleepData = ["sleep_minutes": sleepDurationInMinutes, "date": self.getCurrentDate()] as [String : Any]
+                               self.sendDataToServer(urlString: "sleep_logs", data: sleepData)
+                           }
+                       }
+                    
+                case "waterIntake":
+                    self.healthStore.requestWaterIntakeDataForToday { waterStats in
+                        if let waterStat = waterStats.first {
+                            DispatchQueue.main.async {
+                                print("waterStat: \(waterStat)")
+                                
+                                self.todaysWaterIntake = waterStat.stat ?? 0
+                            }
+                        }
+                    }
+                case "exerciseTime":
+                    self.healthStore.requestExerciseTimeForToday { exerciseTimeInMinutes in
+                        DispatchQueue.main.async {
+                            print("Exercise time for today: \(exerciseTimeInMinutes) minutes")
+                            self.todayExerciseTime = exerciseTimeInMinutes
+                        }
+                    }
+                
                 default:
                     self.healthStore.requestHealthStat(by: activity.id) { hStats in
                         print("hstats: \(hStats)")
@@ -94,7 +125,12 @@ final class DashboardViewModel: ObservableObject {
                 
             }
         
+    func formatTime(minutes: Double) -> String {
+        let hours = Int(minutes) / 60
+        let remainingMinutes = Int(minutes) % 60
         
+        return "\(hours)h \(remainingMinutes)m"
+    }
     
     let measurementFormatter = MeasurementFormatter()
     

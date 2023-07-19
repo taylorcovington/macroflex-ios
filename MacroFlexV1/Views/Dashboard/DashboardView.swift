@@ -201,8 +201,9 @@ struct todaysProgressView: View {
                         .resizable()
                         .frame(width: 75, height: 75)
                      
-                    Text("85oz")
+                    Text("\(String(format: "%.0f", viewModel.todaysWaterIntake))oz")
                         .font(.system(size: 24, weight: .bold, design: .rounded))
+                    
                     Text("Water Intake")
                         .font(.system(size: 12, weight: .regular, design: .rounded))
                         .foregroundColor(.secondary)
@@ -224,7 +225,8 @@ struct todaysProgressView: View {
                         .resizable()
                         .frame(width: 75, height: 75)
                      
-                    Text("52 min")
+                    Text("\(String(format: "%.0f", viewModel.todayExerciseTime)) mins")
+
                         .font(.system(size: 24, weight: .bold, design: .rounded))
                     Text("Workout Time")
                         .font(.system(size: 12, weight: .regular, design: .rounded))
@@ -246,7 +248,7 @@ struct todaysProgressView: View {
                     .resizable()
                     .frame(width: 75, height: 75)
                  
-                Text("7 hrs 52 min")
+                Text("\(viewModel.formatTime(minutes: viewModel.todaysSleep))")
                     .font(.system(size: 24, weight: .bold, design: .rounded))
                 Text("Sleep Time")
                     .font(.system(size: 12, weight: .regular, design: .rounded))
