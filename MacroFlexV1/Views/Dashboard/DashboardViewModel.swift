@@ -22,7 +22,7 @@ final class DashboardViewModel: ObservableObject {
     private let tokenKey = "AuthToken"
     
     
-    func sendDataToServer(urlString: String, data: [String: Any]) {
+    func sendDataToServer(urlString: String, dataArray: [[String: Any]]) {
         guard let url = URL(string: "http://192.168.1.209:8080/api/\(urlString)") else {
             print("Invalid URL")
             return
@@ -32,7 +32,7 @@ final class DashboardViewModel: ObservableObject {
             return
         }
         
-        let jsonData = try? JSONSerialization.data(withJSONObject: data)
+        let jsonData = try? JSONSerialization.data(withJSONObject: dataArray)
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -67,33 +67,64 @@ final class DashboardViewModel: ObservableObject {
                 case "stepCount":
                     self.healthStore.requestHealthStat(by: activity.id) { hStats in
                         print("hstats: \(hStats)")
-                        self.healthData = hStats
+                            self.healthData = hStats
+                            
+                            var stepCountDataArray: [[String: Any]] = []
+
+                            let dateFormatter = DateFormatter()
+                            dateFormatter.dateFormat = "yyyy-MM-dd" // Choose an appropriate date format
+                            
+                            for healthStat in hStats {
+                                let formattedDate = dateFormatter.string(from: healthStat.date)
+                                let stepAmount = Int(healthStat.stat ?? 0)
+                                let stepCountData: [String: Any] = ["step_amount": stepAmount, "date": formattedDate]
+                                stepCountDataArray.append(stepCountData)
+                            }
+                            
+                            self.sendDataToServer(urlString: "step_logs", dataArray: stepCountDataArray)
                     }
                     self.healthStore.requestHealthStatToday(by: activity.id) { hStat in
                         print("Today's health stat: \(hStat)")
                         self.healthStatToday = hStat
-                        let stepCountData = ["step_amount": hStat, "date": self.getCurrentDate()] as [String : Any]
-                        self.sendDataToServer(urlString: "step_logs", data: stepCountData)
+                        
                         
                     }
                 case "bodyMass":
                     self.healthStore.requestBodyWeight() { hStats in
                         print("hstats: \(hStats)")
                         self.healthData = hStats
+                        
+                        var weightDataArray: [[String: Any]] = []
+
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "yyyy-MM-dd" // Choose an appropriate date format
+                        
+                        for healthStat in hStats {
+                            let formattedDate = dateFormatter.string(from: healthStat.date)
+                            let weightAmount = healthStat.stat ?? 0
+                            let roundedWeightAmount = (weightAmount * 10).rounded() / 10
+                            let formattedWeightAmount = String(format: "%.1f", roundedWeightAmount)
+                            let weightData: [String: Any] = ["weight": formattedWeightAmount, "date": formattedDate]
+                            weightDataArray.append(weightData)
+                        }
+                        
+                        self.sendDataToServer(urlString: "weight_logs", dataArray: weightDataArray)
+                    
+                        
                     }
                     self.healthStore.requestBodyWeightToday() { hStat in
                         print("Today's body weight: \(hStat)")
                         self.todaysWeight = hStat
-                        let weightData = ["weight": hStat, "date": self.getCurrentDate()] as [String : Any]
-                        self.sendDataToServer(urlString: "weight_logs", data: weightData)
+//                        let weightData = ["weight": hStat, "date": self.getCurrentDate()] as [String : Any]
+//                        self.sendDataToServer(urlString: "weight_logs", data: weightData)
                     }
                 case "sleep":
                     self.healthStore.requestSleepDataForToday { sleepDurationInMinutes in
                            DispatchQueue.main.async {
                                print("Sleep duration for today: \(sleepDurationInMinutes) minutes")
                                self.todaysSleep = sleepDurationInMinutes
-                               let sleepData = ["sleep_minutes": sleepDurationInMinutes, "date": self.getCurrentDate()] as [String : Any]
-                               self.sendDataToServer(urlString: "sleep_logs", data: sleepData)
+//                               let sleepData = ["sleep_minutes": sleepDurationInMinutes, "date": self.getCurrentDate()] as [String : Any]
+//                               self.sendDataToServer(urlString: "sleep_logs", data: sleepData)
                            }
                        }
                     
