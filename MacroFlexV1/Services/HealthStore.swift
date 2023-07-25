@@ -13,6 +13,7 @@ class HealthStore {
     
     var healthStore: HKHealthStore?
     var query: HKStatisticsCollectionQuery?
+    @Published var todaysSleep: Double = 0.0
     
     
     init() {
@@ -102,11 +103,15 @@ class HealthStore {
         store.execute(query)
     }
     
+    
+//    MARK: Sleep
     func requestSleepData(completion: @escaping ([HealthStat]) -> Void) {
         guard let store = healthStore,
               let sleepType = HKObjectType.categoryType(forIdentifier: .sleepAnalysis) else {
             return
         }
+        
+        let asleepValue = HKCategoryValueSleepAnalysis.asleepUnspecified.rawValue
         
         var healthStats = [HealthStat]()
         
@@ -120,9 +125,12 @@ class HealthStore {
                 print("Error querying sleep data: \(error.localizedDescription)")
             } else if let samples = results as? [HKCategorySample] {
                 for sample in samples {
-                    let sleepDuration = sample.endDate.timeIntervalSince(sample.startDate)
-                    let stat = HealthStat(stat: sleepDuration, date: sample.startDate)
-                    healthStats.append(stat)
+                    // Check if the sample's value is equal to the asleep value
+                    if sample.value == asleepValue {
+                        let sleepDuration = sample.endDate.timeIntervalSince(sample.startDate)
+                        let stat = HealthStat(stat: sleepDuration, date: sample.startDate)
+                        healthStats.append(stat)
+                    }
                 }
                 completion(healthStats)
             }
@@ -131,41 +139,45 @@ class HealthStore {
         store.execute(query)
     }
     
-    func requestSleepDataForToday(completion: @escaping (Double) -> Void) {
-        guard let store = healthStore,
-              let sleepType = HKObjectType.categoryType(forIdentifier: .sleepAnalysis) else {
-            return
-        }
-        
-        let calendar = Calendar.current
-        let startDate = calendar.startOfDay(for: Date())
-        let endDate = Date()
-        
-        let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictStartDate)
-        
-        let query = HKSampleQuery(sampleType: sleepType, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: nil) { query, results, error in
-            if let error = error {
-                print("Error querying sleep data for today: \(error.localizedDescription)")
-            } else if let samples = results as? [HKCategorySample] {
-                var totalSleepDurationInSeconds: TimeInterval = 0.0
-                
-                for sample in samples {
-                    totalSleepDurationInSeconds += sample.endDate.timeIntervalSince(sample.startDate)
-                }
-                
-                // Convert sleep duration to minutes
-                let totalSleepDurationInMinutes = totalSleepDurationInSeconds / 60.0
-                
-                // Call the completion handler with the total sleep duration in minutes
-                completion(totalSleepDurationInMinutes)
-            } else {
-                // If no sleep data is available for today, return 0 minutes
-                completion(0)
-            }
-        }
-        
-        store.execute(query)
-    }
+    func requestSleepDataForLastNight(completion: @escaping (Double) -> Void) {
+        let healthStore = HKHealthStore()
+         let sleepType = HKObjectType.categoryType(forIdentifier: .sleepAnalysis)!
+         let calendar = Calendar.current
+         let now = Date()
+         let endOfDay = calendar.startOfDay(for: now)
+         let startOfDay = calendar.date(byAdding: .day, value: 0, to: endOfDay)! // Same day, 0 means today
+         
+         // Predicate to filter for HKCategoryValueSleepAnalysis.asleepUnspecified
+         let predicate = HKQuery.predicateForSamples(withStart: startOfDay, end: endOfDay, options: .strictStartDate)
+         let categoryValue = HKCategoryValueSleepAnalysis.asleepUnspecified.rawValue
+         let categoryPredicate = HKQuery.predicateForCategorySamples(with: .equalTo, value: categoryValue)
+         let combinedPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [predicate, categoryPredicate])
+         
+         let query = HKSampleQuery(sampleType: sleepType, predicate: combinedPredicate, limit: HKObjectQueryNoLimit, sortDescriptors: nil) { (query, samples, error) in
+             guard let samples = samples, error == nil else {
+                 print("Error querying sleep data: \(error?.localizedDescription ?? "Unknown Error")")
+                 return
+             }
+             
+             var totalSleepDuration: TimeInterval = 0
+             
+             for sample in samples {
+                 if let sample = sample as? HKCategorySample {
+                     totalSleepDuration += sample.endDate.timeIntervalSince(sample.startDate)
+                 }
+             }
+             
+             let sleepDurationInMinutes = totalSleepDuration / 60
+             print("SLEEP DURATION >>>> \(sleepDurationInMinutes)")
+             DispatchQueue.main.async {
+                 self.todaysSleep = sleepDurationInMinutes
+             }
+         }
+         
+         healthStore.execute(query)
+     }
+
+
 
 
 

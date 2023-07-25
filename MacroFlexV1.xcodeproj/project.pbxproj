@@ -71,6 +71,7 @@
 		89BAF00E2A33CD3D0013F97E /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BAF00D2A33CD3D0013F97E /* ContentViewModel.swift */; };
 		89BAF0102A33D2A60013F97E /* Signup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BAF00F2A33D2A60013F97E /* Signup.swift */; };
 		89BAF0152A392AD50013F97E /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = 89BAF0142A392AD50013F97E /* Supabase */; };
+		89FD7E442A6AEB500036822C /* SleepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FD7E432A6AEB500036822C /* SleepView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -134,6 +135,7 @@
 		89BAEFFF2A33C7030013F97E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		89BAF00D2A33CD3D0013F97E /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		89BAF00F2A33D2A60013F97E /* Signup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Signup.swift; sourceTree = "<group>"; };
+		89FD7E432A6AEB500036822C /* SleepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -310,6 +312,7 @@
 				8934135B29D7909900D9457B /* StepsView.swift */,
 				8946B2CC29E0BDBA00AEFD7B /* WaterIntakeView.swift */,
 				8946B2CE29E0BDCF00AEFD7B /* WeightTrackingView.swift */,
+				89FD7E432A6AEB500036822C /* SleepView.swift */,
 			);
 			path = Metrics;
 			sourceTree = "<group>";
@@ -461,6 +464,7 @@
 			files = (
 				89BAF0102A33D2A60013F97E /* Signup.swift in Sources */,
 				893138FA29DE2C5900FDF70B /* CustomWeightPicker.swift in Sources */,
+				89FD7E442A6AEB500036822C /* SleepView.swift in Sources */,
 				8934134729D78D1000D9457B /* ExerciseView.swift in Sources */,
 				8946B2D729E0D2F700AEFD7B /* AS_Feature.swift in Sources */,
 				8946B2F729E6D69400AEFD7B /* ConnectView.swift in Sources */,

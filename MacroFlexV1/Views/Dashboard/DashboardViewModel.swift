@@ -21,6 +21,8 @@ final class DashboardViewModel: ObservableObject {
     @Published var todayExerciseTime: Double = 0
     private let tokenKey = "AuthToken"
     
+    @Published var sleepStats: [HealthStat] = [] // Your array of HealthStat objects goes here
+    
     
     func sendDataToServer(urlString: String, dataArray: [[String: Any]]) {
         guard let url = URL(string: "http://192.168.1.209:8080/api/\(urlString)") else {
@@ -119,7 +121,30 @@ final class DashboardViewModel: ObservableObject {
 //                        self.sendDataToServer(urlString: "weight_logs", data: weightData)
                     }
                 case "sleep":
-                    self.healthStore.requestSleepDataForToday { sleepDurationInMinutes in
+                    self.healthStore.requestSleepData { sleepStats in
+                        print("sleepStats: \(sleepStats)")
+                        self.sleepStats = sleepStats // Assuming self.healthData is [HealthStat]
+                        
+                        let aggregatedData = aggregatedSleepDataForLast7Days(sleepStats: sleepStats)
+                        
+                        var sleepDataArray: [[String: Any]] = []
+
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "yyyy-MM-dd" // Choose an appropriate date format
+                        
+                        
+                        
+                        for healthStat in sleepStats {
+                            let formattedDate = dateFormatter.string(from: healthStat.date)
+                            let sleepAmount = Int(healthStat.stat ?? 0)
+                            let sleepData: [String: Any] = ["sleep_minutes": sleepAmount, "date": formattedDate]
+                            sleepDataArray.append(sleepData)
+                        }
+                        
+                        self.sendDataToServer(urlString: "sleep_logs", dataArray: sleepDataArray)
+                    }
+
+                    self.healthStore.requestSleepDataForLastNight { sleepDurationInMinutes in
                            DispatchQueue.main.async {
                                print("Sleep duration for today: \(sleepDurationInMinutes) minutes")
                                self.todaysSleep = sleepDurationInMinutes
@@ -196,4 +221,23 @@ final class DashboardViewModel: ObservableObject {
         return dateFormatter.string(from: Date())
     }
 
+}
+
+func aggregatedSleepDataForLast7Days(sleepStats: [HealthStat]) -> [SleepEntry] {
+    // Filter sleep data for the last 7 days
+    let last7Days = Calendar.current.date(byAdding: .day, value: -7, to: Date())!
+    let filteredData = sleepStats.filter { $0.date >= last7Days }
+    
+    // Group the filtered data by date
+    let groupedData = Dictionary(grouping: filteredData, by: { Calendar.current.startOfDay(for: $0.date) })
+    
+    // Calculate the total sleep duration for each date
+    var aggregatedData: [SleepEntry] = []
+    for (date, stats) in groupedData {
+        let totalSleepDuration = stats.reduce(0) { $0 + ($1.stat ?? 0) }
+        let entry = SleepEntry(date: date, totalSleepDuration: totalSleepDuration)
+        aggregatedData.append(entry)
+    }
+    
+    return aggregatedData
 }

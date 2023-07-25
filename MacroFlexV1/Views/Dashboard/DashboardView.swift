@@ -260,8 +260,9 @@ struct todaysProgressView: View {
             .padding(10)
             .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 12, style: .continuous))
             .onTapGesture {
-                router.showScreen(.fullScreenCover) { router in
-                    ExerciseView()
+                router.showScreen(.push) { router in
+                    SleepView()
+                    
                 }
             }
             VStack {
